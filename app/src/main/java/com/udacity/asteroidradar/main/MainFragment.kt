@@ -29,9 +29,16 @@ class MainFragment : Fragment() {
 
         binding.lifecycleOwner = this
         setHasOptionsMenu(true)
+
+        // Create the adapter variable that is the Adapter constructed in the another file for the Recycler View
         val adapter = AsteroidListAdapter()
+        // Associates the Recycle View name in layout.xml
         binding.asteroidRecycler.adapter = adapter
-        binding.lifecycleOwner = this
+
+        /*val adapter = SleepNightAdapter(SleepNightAdapter.SleepNightListener { nightId ->
+            sleepTrackerViewModel.onSleepNightClicked(nightId)
+        })*/
+
         return binding.root
 
     }
