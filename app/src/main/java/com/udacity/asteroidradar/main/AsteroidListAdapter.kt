@@ -1,6 +1,5 @@
 package com.udacity.asteroidradar.main
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.database.Asteroid
+import com.udacity.asteroidradar.databinding.ListItemAsteroidBinding
 
 class AsteroidListAdapter(): ListAdapter<Asteroid,
         AsteroidListAdapter.ViewHolder>(AsteroidDiffCallBack()) {
@@ -102,6 +102,8 @@ class AsteroidListAdapter(): ListAdapter<Asteroid,
         isPotentiallyHazardous = true
     )
 
+    // TODO: After the creation of ViewModel, we have t odelete var data and set. And then update the adaptar in Fragment using submitList
+
     var data = listOf<Asteroid>(asteroidOne, asteroidTwo, asteroidThree, asteroidFour,
                                 asteroidFive, asteroidSix, asteroidSeven, asteroidEight)
         set(value) {
@@ -112,27 +114,28 @@ class AsteroidListAdapter(): ListAdapter<Asteroid,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
-        // holder.(clickListener,getItem(position)!!)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_asteroid, parent,false)
-        return ViewHolder(view)
+        /*val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_asteroid, parent,false)*/
+        return ViewHolder.from(parent)
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder private constructor(val binding: ListItemAsteroidBinding): RecyclerView.ViewHolder(binding.root) {
 
-        val codename: TextView = itemView.findViewById(R.id.asteroid_name_string)
+        /*val codename: TextView = itemView.findViewById(R.id.asteroid_name_string)
         val approachDate: TextView = itemView.findViewById(R.id.asteroid_date_string)
-        val risk: ImageView = itemView.findViewById(R.id.asteroid_risk_imageic)
+        val risk: ImageView = itemView.findViewById(R.id.asteroid_risk_imageic)*/
 
         fun bind(item: Asteroid) {
             val res = itemView.context.resources
-            codename.text = item.codename
-            approachDate.text = item.closeApproachDate
+            binding.asteroidNameString.text = item.codename
+            //codename.text = item.codename
+            binding.asteroidDateString.text = item.closeApproachDate
+            //approachDate.text = item.closeApproachDate
 
-            risk.setImageResource(
+            binding.asteroidRiskImageic.setImageResource(
                 when (item.isPotentiallyHazardous) {
                     true -> R.drawable.ic_status_potentially_hazardous
                     else -> R.drawable.ic_status_normal
@@ -143,9 +146,10 @@ class AsteroidListAdapter(): ListAdapter<Asteroid,
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater
-                    .inflate(R.layout.list_item_asteroid, parent, false)
-                return ViewHolder(view)
+                val binding = ListItemAsteroidBinding.inflate(layoutInflater, parent, false)
+                /*val view = layoutInflater
+                    .inflate(R.layout.list_item_asteroid, parent, false)*/
+                return ViewHolder(binding)
             }
         }
     }
