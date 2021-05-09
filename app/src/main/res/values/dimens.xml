@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin_start_asteroid">16dp</dimen>
+    <dimen name="layout_margin_top_asteroid">16dp</dimen>
+    <dimen name="asteroid_name_size">14sp</dimen>
+    <dimen name="layout_texts_constraint_asteroid">8dp</dimen>
+    <dimen name="layout_margin_top_asteroid_risk">8dp</dimen>
+    <dimen name="layout_margin_end_asteroid_risk">16dp</dimen>
+    <dimen name="layout_margin_bottom_asteroid">16dp</dimen>
+</resources>
