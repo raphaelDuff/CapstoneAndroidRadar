@@ -16,9 +16,9 @@ import com.udacity.asteroidradar.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
-    /*private val mainViewModel: MainViewModel by lazy {
+    private val mainViewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
-    }*/
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -29,12 +29,12 @@ class MainFragment : Fragment() {
 
 
         binding.lifecycleOwner = this
-        val mainViewModel = MainViewModel()
+        val mainViewModel = mainViewModel
         setHasOptionsMenu(true)
 
         // Create the adapter variable that is the Adapter constructed in the another file for the Recycler View
-        val adapter = AsteroidListAdapter(AsteroidListAdapter.AsteroidListener { id ->
-            mainViewModel.onAsteroidClicked(id)
+        val adapter = AsteroidListAdapter(AsteroidListAdapter.AsteroidListener {
+            mainViewModel.onAsteroidClicked(it)
         })
 
         // Associates the Recycle View name in layout.xml
@@ -42,10 +42,17 @@ class MainFragment : Fragment() {
 
 
 
-        mainViewModel.navigateToAsteroidDetail.observe(viewLifecycleOwner, Observer {id ->
+       /* mainViewModel.navigateToAsteroidDetail.observe(viewLifecycleOwner, Observer {id ->
             id?.let {
                 this.findNavController().navigate(MainFragmentDirections
                     .actionMainFragmentToDetailFragment(id))
+                mainViewModel.onAsteroidDetailNavigated()
+            }
+        })*/
+
+        mainViewModel.navigateToAsteroidDetail.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(it))
                 mainViewModel.onAsteroidDetailNavigated()
             }
         })

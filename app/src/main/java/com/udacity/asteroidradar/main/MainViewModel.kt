@@ -9,16 +9,17 @@ import com.udacity.asteroidradar.database.Asteroid
 class MainViewModel : ViewModel() {
 
 
-    private val _navigateToAsteroidDetail = MutableLiveData<Long>()
-    val navigateToAsteroidDetail
+    private val _navigateToAsteroidDetail = MutableLiveData<Asteroid>()
+    val navigateToAsteroidDetail: LiveData<Asteroid>
         get() = _navigateToAsteroidDetail
 
-    fun onAsteroidClicked(id: Long){
-        _navigateToAsteroidDetail.value = id
+    fun onAsteroidClicked(asteroid: Asteroid){
+        _navigateToAsteroidDetail.value = asteroid
     }
 
     fun onAsteroidDetailNavigated() {
         _navigateToAsteroidDetail.value = null
     }
+
 
 }

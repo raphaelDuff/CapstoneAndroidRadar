@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.database.Asteroid
 import com.udacity.asteroidradar.databinding.FragmentDetailBinding
@@ -15,7 +16,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val asteroidOne = Asteroid(
+        /*val asteroidOne = Asteroid(
             id = 5417625478,
             codename = "aaa",
             closeApproachDate = "2021-05-09",
@@ -104,16 +105,21 @@ class DetailFragment : Fragment() {
         )
 
         var asteroids = listOf<Asteroid>(asteroidOne, asteroidTwo, asteroidThree, asteroidFour,
-            asteroidFive, asteroidSix, asteroidSeven, asteroidEight)
+            asteroidFive, asteroidSix, asteroidSeven, asteroidEight)*/
 
         val binding = FragmentDetailBinding.inflate(inflater)
+        val application = requireNotNull(activity).application
+
+        val asteroid = DetailFragmentArgs.fromBundle(requireArguments()).selectedAsteroid
+        val viewModelFactory = DetailViewModelFactory(asteroid,application)
         binding.lifecycleOwner = this
+        binding.viewModel = ViewModelProvider(
+            this, viewModelFactory).get(DetailViewModel::class.java
+        )
 
-        var asteroidId = DetailFragmentArgs.fromBundle(requireArguments()).selectedAsteroidKey
+        // var asteroidId = DetailFragmentArgs.fromBundle(requireArguments()).selectedAsteroidKey
+        //var asteroid: Asteroid = asteroids.filter { it.id == asteroidId }.single()
 
-        var asteroid: Asteroid = asteroids.filter { it.id == asteroidId }.single()
-
-        binding.asteroid = asteroid
 
         binding.helpButton.setOnClickListener {
             displayAstronomicalUnitExplanationDialog()
