@@ -12,6 +12,5 @@ data class Asteroid(
     var estimatedDiameter: Double,
     var relativeVelocity: Double,
     var distanceFromEarth: Double,
-
     var isPotentiallyHazardous: Boolean
 ) : Parcelable

@@ -28,16 +28,14 @@ class MainFragment : Fragment() {
             inflater, R.layout.fragment_main, container, false)
 
         binding.lifecycleOwner = this
-        val mainViewModel = mainViewModel
+        binding.mainViewModel = mainViewModel
         setHasOptionsMenu(true)
 
         // Create the adapter variable that is the Adapter constructed in the another file for the Recycler View
-        val adapter = AsteroidListAdapter(AsteroidListAdapter.AsteroidListener {
+        binding.asteroidRecycler.adapter = AsteroidListAdapter(AsteroidListAdapter.AsteroidListener {
             mainViewModel.onAsteroidClicked(it)
         })
 
-        // Associates the Recycle View name in layout.xml
-        binding.asteroidRecycler.adapter = adapter
 
         mainViewModel.navigateToAsteroidDetail.observe(viewLifecycleOwner, Observer {
             if (null != it) {

@@ -1,18 +1,18 @@
 package com.udacity.asteroidradar
 
 import android.widget.ImageView
+import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.udacity.asteroidradar.database.Asteroid
+import com.udacity.asteroidradar.main.AsteroidListAdapter
 
-/*@BindingAdapter("statusIcon")
-fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
-    if (isHazardous) {
-        imageView.setImageResource(R.drawable.ic_status_potentially_hazardous)
-    } else {
-        imageView.setImageResource(R.drawable.ic_status_normal)
-    }
-}*/
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView, data : List<Asteroid>?) {
+    val adapter = recyclerView.adapter as AsteroidListAdapter
+    adapter.submitList(data)
+}
 
 @BindingAdapter("statusIcon")
 fun ImageView.setStatusImage(item: Asteroid?) {

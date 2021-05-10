@@ -14,106 +14,105 @@ import com.udacity.asteroidradar.databinding.ListItemAsteroidBinding
 
 class AsteroidListAdapter(val clickListener: AsteroidListener): ListAdapter<Asteroid,
         AsteroidListAdapter.ViewHolder>(AsteroidDiffCallBack()) {
-    private val asteroidOne = Asteroid(
-        id = 5417625478,
-        codename = "aaa",
-        closeApproachDate = "2021-05-09",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = true
-    )
+        /*private val asteroidOne = Asteroid(
+            id = 5417625478,
+            codename = "aaa",
+            closeApproachDate = "2021-05-09",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = true
+        )
 
-    private val asteroidTwo = Asteroid(
-        id = 874458847,
-        codename = "bbb",
-        closeApproachDate = "2021-05-10",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = true
-    )
+        private val asteroidTwo = Asteroid(
+            id = 874458847,
+            codename = "bbb",
+            closeApproachDate = "2021-05-10",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = true
+        )
 
-    private val asteroidThree = Asteroid(
-        id = 658458441,
-        codename = "ccc",
-        closeApproachDate = "2021-05-11",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = false
-    )
+        private val asteroidThree = Asteroid(
+            id = 658458441,
+            codename = "ccc",
+            closeApproachDate = "2021-05-11",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = false
+        )
 
-    private val asteroidFour = Asteroid(
-        id = 658458441,
-        codename = "ddd",
-        closeApproachDate = "2021-05-16",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = false
-    )
+        private val asteroidFour = Asteroid(
+            id = 658458441,
+            codename = "ddd",
+            closeApproachDate = "2021-05-16",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = false
+        )
 
-    private val asteroidFive = Asteroid(
-        id = 658458441,
-        codename = "eee",
-        closeApproachDate = "2021-05-15",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = true
-    )
+        private val asteroidFive = Asteroid(
+            id = 658458441,
+            codename = "eee",
+            closeApproachDate = "2021-05-15",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = true
+        )
 
-    private val asteroidSix = Asteroid(
-        id = 658458441,
-        codename = "fff",
-        closeApproachDate = "2021-05-14",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = true
-    )
+        private val asteroidSix = Asteroid(
+            id = 658458441,
+            codename = "fff",
+            closeApproachDate = "2021-05-14",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = true
+        )
 
-    private val asteroidSeven = Asteroid(
-        id = 658458441,
-        codename = "ggg",
-        closeApproachDate = "2021-05-13",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = false
-    )
+        private val asteroidSeven = Asteroid(
+            id = 658458441,
+            codename = "ggg",
+            closeApproachDate = "2021-05-13",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = false
+        )
 
-    private val asteroidEight = Asteroid(
-        id = 658458441,
-        codename = "hhh",
-        closeApproachDate = "2021-05-12",
-        absoluteMagnitude = 1234.57,
-        estimatedDiameter = 1234.57,
-        relativeVelocity = 1234.57,
-        distanceFromEarth = 1234.57,
-        isPotentiallyHazardous = true
-    )
+        private val asteroidEight = Asteroid(
+            id = 658458441,
+            codename = "hhh",
+            closeApproachDate = "2021-05-12",
+            absoluteMagnitude = 1234.57,
+            estimatedDiameter = 1234.57,
+            relativeVelocity = 1234.57,
+            distanceFromEarth = 1234.57,
+            isPotentiallyHazardous = true
+        )
 
-    // TODO: After the creation of ViewModel, we have to delete var data and set. And then update the adaptar in Fragment using submitList
+        // TODO: After the creation of ViewModel, we have to delete var data and set. And then update the adaptar in Fragment using submitList
 
-    var data = listOf<Asteroid>(asteroidOne, asteroidTwo, asteroidThree, asteroidFour,
-                                asteroidFive, asteroidSix, asteroidSeven, asteroidEight)
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+        var data = listOf<Asteroid>(asteroidOne, asteroidTwo, asteroidThree, asteroidFour,
+                                    asteroidFive, asteroidSix, asteroidSeven, asteroidEight)
+            set(value) {
+                field = value
+                notifyDataSetChanged()
+            }*/
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        // holder.bind(item)
+        val item = getItem(position)
         holder.bind(clickListener, item)
     }
 
@@ -139,7 +138,7 @@ class AsteroidListAdapter(val clickListener: AsteroidListener): ListAdapter<Aste
         }
     }
 
-    override fun getItemCount() = data.size
+//    override fun getItemCount() = data.size
 
     class AsteroidDiffCallBack : DiffUtil.ItemCallback<Asteroid>() {
         override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
