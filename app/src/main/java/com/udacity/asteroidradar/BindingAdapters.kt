@@ -1,12 +1,16 @@
 package com.udacity.asteroidradar
 
+
 import android.widget.ImageView
-import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import com.udacity.asteroidradar.database.Apod
+
 import com.udacity.asteroidradar.database.Asteroid
 import com.udacity.asteroidradar.main.AsteroidListAdapter
+
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data : List<Asteroid>?) {
@@ -63,4 +67,15 @@ fun TextView.setAsteroidDate(item: Asteroid?) {
     item?.let {
         text = item.closeApproachDate
     }
+}
+
+
+@BindingAdapter("dayImage")
+fun bindDayImage(view: ImageView, url: String?) {
+    val context = view.context
+    Picasso.with(context)
+        .load(url)
+        .fit()
+        .centerCrop()
+        .into(view)
 }

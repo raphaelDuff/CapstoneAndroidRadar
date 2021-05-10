@@ -19,7 +19,9 @@ class DetailFragment : Fragment() {
         val binding = FragmentDetailBinding.inflate(inflater)
         val application = requireNotNull(activity).application
 
+        // Safeargs to pass Android data between Fragments
         val asteroid = DetailFragmentArgs.fromBundle(requireArguments()).selectedAsteroid
+        // ViewModel initialization with the asteroid collected by Safeargs
         val viewModelFactory = DetailViewModelFactory(asteroid,application)
         binding.lifecycleOwner = this
         binding.detailViewModel = ViewModelProvider(
