@@ -1,4 +1,3 @@
-/*
 package com.udacity.asteroidradar.main
 
 import android.util.Log
@@ -10,19 +9,16 @@ import com.udacity.asteroidradar.database.Asteroid
 class MainViewModel : ViewModel() {
 
 
+    private val _navigateToAsteroidDetail = MutableLiveData<Long>()
+    val navigateToAsteroidDetail
+        get() = _navigateToAsteroidDetail
 
-    private val asteroids = mutableListOf<Asteroid>(asteroidOne, asteroidTwo, asteroidThree)
-    private val _asteroids = MutableLiveData<List<Asteroid>>(asteroidOne, asteroidTwo, asteroidThree)
-
-    val asteroids: LiveData<List<Asteroid>>
-        get() = _asteroids
-
-    init {
-        _asteroids.value = asteroids
-        Log.INFO("ViewModelCreated")
+    fun onAsteroidClicked(id: Long){
+        _navigateToAsteroidDetail.value = id
     }
 
-
+    fun onAsteroidDetailNavigated() {
+        _navigateToAsteroidDetail.value = null
+    }
 
 }
-*/
