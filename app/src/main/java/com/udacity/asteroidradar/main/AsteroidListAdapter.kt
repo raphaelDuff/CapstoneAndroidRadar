@@ -102,7 +102,7 @@ class AsteroidListAdapter(): ListAdapter<Asteroid,
         isPotentiallyHazardous = true
     )
 
-    // TODO: After the creation of ViewModel, we have t odelete var data and set. And then update the adaptar in Fragment using submitList
+    // TODO: After the creation of ViewModel, we have to delete var data and set. And then update the adaptar in Fragment using submitList
 
     var data = listOf<Asteroid>(asteroidOne, asteroidTwo, asteroidThree, asteroidFour,
                                 asteroidFive, asteroidSix, asteroidSeven, asteroidEight)
@@ -117,38 +117,21 @@ class AsteroidListAdapter(): ListAdapter<Asteroid,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        /*val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_asteroid, parent,false)*/
         return ViewHolder.from(parent)
     }
 
     class ViewHolder private constructor(val binding: ListItemAsteroidBinding): RecyclerView.ViewHolder(binding.root) {
 
-        /*val codename: TextView = itemView.findViewById(R.id.asteroid_name_string)
-        val approachDate: TextView = itemView.findViewById(R.id.asteroid_date_string)
-        val risk: ImageView = itemView.findViewById(R.id.asteroid_risk_imageic)*/
-
         fun bind(item: Asteroid) {
-            val res = itemView.context.resources
-            binding.asteroidNameString.text = item.codename
-            //codename.text = item.codename
-            binding.asteroidDateString.text = item.closeApproachDate
-            //approachDate.text = item.closeApproachDate
+            binding.asteroid = item
+            binding.executePendingBindings()
 
-            binding.asteroidRiskImageic.setImageResource(
-                when (item.isPotentiallyHazardous) {
-                    true -> R.drawable.ic_status_potentially_hazardous
-                    else -> R.drawable.ic_status_normal
-                }
-            )
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemAsteroidBinding.inflate(layoutInflater, parent, false)
-                /*val view = layoutInflater
-                    .inflate(R.layout.list_item_asteroid, parent, false)*/
                 return ViewHolder(binding)
             }
         }
@@ -164,7 +147,6 @@ class AsteroidListAdapter(): ListAdapter<Asteroid,
         override fun areContentsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
             return oldItem == newItem
         }
-
     }
 
     class AsteroidListener(val clickListener: (id: Long) -> Unit) {

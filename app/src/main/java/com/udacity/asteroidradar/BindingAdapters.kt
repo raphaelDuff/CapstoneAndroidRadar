@@ -3,13 +3,24 @@ package com.udacity.asteroidradar
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.udacity.asteroidradar.database.Asteroid
 
-@BindingAdapter("statusIcon")
+/*@BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.ic_status_potentially_hazardous)
     } else {
         imageView.setImageResource(R.drawable.ic_status_normal)
+    }
+}*/
+
+@BindingAdapter("statusIcon")
+fun ImageView.setStatusImage(item: Asteroid?) {
+    item?.let {
+        setImageResource(when (item.isPotentiallyHazardous) {
+            true -> R.drawable.ic_status_potentially_hazardous
+            else -> R.drawable.ic_status_normal
+        })
     }
 }
 
@@ -38,4 +49,18 @@ fun bindTextViewToKmUnit(textView: TextView, number: Double) {
 fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
     val context = textView.context
     textView.text = String.format(context.getString(R.string.km_s_unit_format), number)
+}
+
+@BindingAdapter("asteroidCodeName")
+fun TextView.setAsteroidName(item: Asteroid?) {
+    item?.let {
+        text = item.codename
+    }
+}
+
+@BindingAdapter("asteroidApproachDate")
+fun TextView.setAsteroidDate(item: Asteroid?) {
+    item?.let {
+        text = item.closeApproachDate
+    }
 }
