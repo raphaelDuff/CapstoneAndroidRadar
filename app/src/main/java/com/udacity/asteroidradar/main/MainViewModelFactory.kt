@@ -6,10 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.asteroidradar.database.Asteroid
 
-*/
-/**
- * Simple ViewModel factory that provides the MarsProperty and context to the ViewModel.
- *//*
 
 class MainViewModelFactory(
     private val asteriud: Asteroid,

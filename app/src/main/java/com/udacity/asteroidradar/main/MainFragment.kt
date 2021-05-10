@@ -27,7 +27,6 @@ class MainFragment : Fragment() {
         val binding: FragmentMainBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_main, container, false)
 
-
         binding.lifecycleOwner = this
         val mainViewModel = mainViewModel
         setHasOptionsMenu(true)
@@ -39,16 +38,6 @@ class MainFragment : Fragment() {
 
         // Associates the Recycle View name in layout.xml
         binding.asteroidRecycler.adapter = adapter
-
-
-
-       /* mainViewModel.navigateToAsteroidDetail.observe(viewLifecycleOwner, Observer {id ->
-            id?.let {
-                this.findNavController().navigate(MainFragmentDirections
-                    .actionMainFragmentToDetailFragment(id))
-                mainViewModel.onAsteroidDetailNavigated()
-            }
-        })*/
 
         mainViewModel.navigateToAsteroidDetail.observe(viewLifecycleOwner, Observer {
             if (null != it) {
